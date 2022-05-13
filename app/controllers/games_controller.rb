@@ -1,7 +1,10 @@
 require 'open-uri'
 require 'json'
 
+# app/controllers/game_controller.rb
 class GamesController < ApplicationController
+  VOWELS = %w[A E I O U Y].freeze
+
   def new
     @letters = []
     new_letters
@@ -11,7 +14,7 @@ class GamesController < ApplicationController
     # params[:letters] is a string 'A K W E R Y F S G C'
     # .split converts to array
     @display_letters = params[:letters].split(' ')
-    @answer = params[:answer]
+    @answer = params[:answer].upcase
     @word = method_json
     score_and_message(5)
   end
@@ -19,13 +22,15 @@ class GamesController < ApplicationController
   private
 
   def new_letters
-    alphabet_array = ('A'..'Z').to_a
-    10.times { @letters << alphabet_array.sample }
+    vowels = []
+    5.times { vowels << VOWELS.sample }
+    consonants = ('A'..'Z').to_a - VOWELS
+    @letters = (vowels + consonants.sample(5)).shuffle
   end
 
   def method_json
     url = "https://wagon-dictionary.herokuapp.com/#{@answer}"
-    word_checker = URI.open(url).read
+    word_checker = URI.parse(url).open.read
     JSON.parse(word_checker)
   end
 

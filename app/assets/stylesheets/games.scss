@@ -1,16 +1,45 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.letter {
-  font-family: 'Times New Roman', Times, serif;
-  color: azure;
-  display: inline;
-  margin: 8px;
-  padding: 13px;
-  background-color: rgb(49, 120, 228);
-  font-size: xx-large;
+
+.container {
+  width: 80vh;
+  padding: 20px;
 }
 
-.question-form {
-  font-size: x-large;
+.letter {
+  font-size: 50px;
+  margin-right: 29px;
+  background-color: rgb(4, 117, 183);
+  color: azure;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgb(62, 62, 62);
+}
+
+.letter-container {
+  display: flex;
+  margin-bottom: 60px;
+}
+
+#form-game {
+  display: flex;
+}
+
+#box-text {
+  width: 70%;
+  height: 40px;
+  font-size: 30px;
+}
+
+#button-submit {
+  width: 20%;
+  height: 45px;
+  font-size: 20px;
+}
+
+.form-container {
+  
 }
